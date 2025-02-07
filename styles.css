@@ -6,14 +6,16 @@
 body {
   margin: 0;
   font-family: "Jost", serif;
-  overflow-x: hidden;
+  overflow-x: hidden!important;
 }
 
 .section {
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 #home {
+  height: 100vh;
+  overflow: hidden!important;
   position: relative;
   background-image: url('./pictures/1.jpg');
   background-size: cover; /* Ensures the image covers the whole section */
@@ -27,25 +29,23 @@ body {
   flex-direction: column;
   justify-content: space-between;
   padding: 28px;
+  overflow: hidden;
 
   .title {
       text-transform: uppercase;
       color: white;
-      font-size: 98px;
+      font-size: 90px;
+      /* font-size: clamp(10px, 6vw, 98px); */
       line-height: 1.5em;
       display: inline-block;
 
       span {
-          display: block;
-          font-weight: 400;
-          letter-spacing: 2px;
+        display: block;
+        font-weight: 400;
+        letter-spacing: 2px;
       }
   }
   .info {
-      /*display: flex;
-      justify-content: flex-end;
-      flex-direction: column;
-      gap: 20px;*/
       width: 300px;
       margin-bottom: 10%;
       margin-left: auto;
@@ -69,23 +69,172 @@ body {
           border-width: 2px;
       }
       .adress {
-          margin-left: 20px;
-          margin-top: 20px;
+        margin-left: 20px;
+        margin-top: 20px;
 
-          span {
-              line-height: 1.8em;
-              display: block;
-              color: white;
-          }
+        span {
+          line-height: 1.8em;
+          display: block;
+          color: white;
+        }
       }
   }
 }
 
+/* ABOUT */
 #about {
   position: relative;
-  background-color: #f9c74f;
+  background-color: #151C2B;
+  padding: 50px 0;
+  overflow: hidden;
+  min-height: 100vh;
 }
 
+.about-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  width: 980px;
+  max-width: 1100px;
+  text-transform: uppercase;
+}
+
+.house-icon {
+  width: 237px;
+  height: auto;
+  margin-right: 30px;
+}
+
+.about-title .text span {
+  display: block;
+  font-weight: 400;
+  letter-spacing: 0px;
+  font-size: 48px;
+  line-height: 0.8;
+}
+
+@media (max-width: 1254px) {
+  .house-icon {
+    width: 180px;
+    margin-right: 20px;
+  }
+  .about-title {
+    width: 980px;
+    max-width: 100%;
+    padding-top: 30px;
+  }
+  .about-title .text span {
+    font-size: 38px;
+    margin-right: 160px;
+  }
+}
+
+@media (max-width: 950px) {
+  .house-icon {
+    width: 90px;
+    margin-right: 20px;
+  }
+  .about-title .text span {
+    font-size: 18px;
+    margin-right: 0px;
+  }
+}
+
+/* ABOUT BLOCK 2 */
+.about-description {
+  display: flex;
+  justify-content: center;
+  color: white;
+  width: 100%;
+  margin: 68px auto 0;
+  text-align: left;
+
+  div {
+    flex: 1;
+    max-width: 350px;
+
+    p {
+      font-size: 12px;
+      line-height: 2em;
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .about-description {
+    width: 100%;
+    align-items: center;
+    flex-direction: column;
+    text-align: left;
+    margin-top: 48px;
+
+    p {
+      width: 100%;
+    }
+  }
+}
+
+/* ABOUT BLOCK 3 PICTURES */
+.about-pictures {
+  margin: 20px 0;
+}
+
+.pic-1 {
+  margin-top: 80px;
+  display: flex;
+  height: 285px;
+
+  div {
+    flex: 1;
+  }
+
+  div:last-child {
+    position: relative;
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      img {
+        height: 285px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.pic-2 {
+  margin-top: 50px;
+  display: flex;
+  height: 442px;
+
+  div {
+    flex: 1;
+  }
+
+  div:last-child {
+    position: relative;
+
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      img {
+        height: 442px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+
+
+/* ACCOMMODATION */
 #accommodation {
   height: 200vh;
   background-color: #90be6d;
@@ -99,6 +248,8 @@ body {
   background-color: #577590;
 }
 
+
+/* HEADER */
 .nav-bar {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
@@ -139,4 +290,24 @@ body {
 
 .nav-bar a:hover {
   color: #f9c74f;
+}
+
+
+/* CONTAINER */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1254px) {
+  .container {
+    max-width: 900px;
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    max-width: 600px;
+  }
 }
