@@ -1,0 +1,43 @@
+.nav-bar {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-bar1 {
+  position: absolute;
+  z-index: 100;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.nav-bar1.visible {
+  opacity: 100;
+}
+
+.nav-bar2 {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.nav-bar2.visible {
+  transform: translateY(0);
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.nav-bar a:hover {
+  color: #f9c74f;
+}

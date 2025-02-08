@@ -8,6 +8,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="about.css">
+    <link rel="stylesheet" href="accodomation.css">
+    <link rel="stylesheet" href="santa.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <script src="navbar.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16/dist/smooth-scroll.polyfills.min.js"></script>
 </head>
@@ -18,7 +24,7 @@
             <a href="#home">Home</a>
             <a href="#about">About Us</a>
             <a href="#accommmodation">Accommodation</a>
-            <a href="#santas-home">Santa's Home</a>
+            <a href="#santas-house">Santa's Home</a>
             <a href="#weddings">Weddings & Honeymoons</a>
         </div>
         <div class="home-inner">
@@ -133,7 +139,41 @@
             </div>
         </div>
     </div>
-    <div id="santas-home" class="section">Santa's Home</div>
+
+    <!-- Santa's House Section -->
+    <div id="santas-house">
+        <div class="swiper">
+            <!-- Additional required wrapper -->
+            <div class="swiper-wrapper">
+            <!-- Slides -->
+                <div class="swiper-slide"><img src="./pictures/santa1.png" alt="Santa's House Image 1" class="swiper-image"></div>
+                <div class="swiper-slide"><img src="./pictures/santa2.png" alt="Santa's House Image 2" class="swiper-image"></div>
+                <div class="swiper-slide"><img src="./pictures/santa3.png" alt="Santa's House Image 3" class="swiper-image"></div>
+            </div>
+            <!-- If we need pagination -->
+            <div class="swiper-pagination" id="swiper-pagination"></div>
+        
+            <!-- If we need navigation buttons -->
+            <!-- <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div> -->
+        
+            <!-- If we need scrollbar -->
+            <!-- <div class="swiper-scrollbar"></div> -->
+        </div>
+
+        <div class="container">
+            <div class="santa-content">
+                <p>This new area of Kakslauttanen has emerged a five-minute drive away from where we first started out. Deep in the heart of the forest, Santa’s realm opens up for you.</p>
+                <p>After all these centuries, Santa has finally decided to unlatch the doors of his home to the public. The idyllic red chalet awaits visitors at the end of a beautiful wooden walking bridge, across a narrow river.  Santa will be there to order; please book an appointment in advance.</p>
+                <p>Santa’s Celebration House is quite a sight. Finland’s largest log building accommodates over 250 guests, whether they be dining, celebrating a wedding or enjoying a concert. For corporate clients, the Celebration House provides an excellent setting for various customer events. The elevated floor section enables impressive product launches for everything from perfumes to sports cars. Although built in the traditional way out of logs, the house has been fitted with state-of-the-art audio-visual equipment.</p>
+            </div>
+            <div class="santa-book-now">
+                <a class="book-now" href="https://www.kakslauttanen.fi/book-now" target="_blank">Book now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Weddings & Honeymoons -->
     <div id="weddings" class="section">Weddings & Honeymoons</div>
 
     <!-- Fixed Navigation Menu -->
@@ -141,11 +181,31 @@
         <a href="#home">Home</a>
         <a href="#about">About Us</a>
         <a href="#accommmodation">Accommodation</a>
-        <a href="#santas-home">Santa's Home</a>
+        <a href="#santas-house">Santa's Home</a>
         <a href="#weddings">Weddings & Honeymoons</a>
     </div>
 
     <script src="./accommodation.js"></script>
+    <script type="module">
+        import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.mjs'
+      
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
 
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
+                clickable: true,
+            },
+
+            autoplay: {
+                delay: 4000, // Slide change interval in milliseconds
+                disableOnInteraction: false, // Continue autoplay after user interactions
+            },
+        });
+    </script>
 </body>
 </html>
