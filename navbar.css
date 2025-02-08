@@ -1,11 +1,11 @@
 .nav-bar {
-  width: 100%;
+  width: calc(100% - 60px);
   background-color: transparent;
   display: flex;
   justify-content: space-around;
   padding: 2px 0;
   transition: transform 0.3s ease-in-out;
-  margin: auto 20px;
+  margin: 0 30px;
 }
 
 .nav-bar1 {
