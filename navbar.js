@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const navBar1 = document.querySelector(".nav-bar1");
   const navBar2 = document.querySelector(".nav-bar2");
-  const about = document.querySelector("#about");
+  const home = document.querySelector("#home");
 
   // Toggle nav-bar2 visibility based on scroll position
   window.addEventListener('scroll', () => {
-      if (window.scrollY > about.offsetHeight - (navBar1.offsetHeight/2)) {
+      if (window.scrollY > home.offsetHeight - (navBar1.offsetHeight/2)) {
           navBar1.classList.remove("visible");
           navBar2.classList.add("visible");
       } else {

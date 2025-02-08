@@ -232,14 +232,170 @@ body {
   }
 }
 
+.pic-3 {
+  margin-top: 50px;
+  display: flex;
+  height: 180px;
+
+  div {
+    flex: 1;
+  }
+
+  div:first-child {
+    position: relative;
+
+    div {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      img {
+        height: 315px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.pic-4 {
+  margin-top: 50px;
+  display: flex;
+  height: 270px;
+
+  div {
+    flex: 1;
+  }
+
+  div:last-child {
+    position: relative;
+
+    div {
+      position: absolute;
+      z-index: 10;
+      top: 0;
+      left: 30px;
+
+      img {
+        height: 359px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+.pic-5 {
+  margin-top: 50px;
+  margin-bottom: 150px;
+  display: flex;
+  height: 315px;
+
+  div {
+    flex: 1;
+  }
+
+  div:first-child {
+    position: relative;
+
+    div {
+      position: absolute;
+      top: 0;
+      right: -180px;
+
+      img {
+        height: 315px;
+        width: auto;
+        object-fit: cover;
+      }
+    }
+  }
+}
 
 
 /* ACCOMMODATION */
-#accommodation {
-  height: 200vh;
-  background-color: #90be6d;
+#accommmodation {
+  background-color: white;
+  padding: 60px 0;
 }
 
+.accommodation-section {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+}
+
+.accommodation-list {
+  width: 100%;
+  max-width: 510px;
+  padding-top: 20px;
+}
+
+.accommodation-list ul {
+  list-style-type: none;
+  padding: 0;
+  text-align: left;
+  width: 100%;
+  max-width: 300px;
+  margin: auto;
+}
+
+.accommodation-list li {
+  text-transform: uppercase;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 22px;
+  line-height: 0.8;
+  transition: background-color 0.3s ease;
+  color: gray;
+}
+
+.accommodation-list li.active {
+  text-decoration: underline;
+  color: black;
+}
+
+.accommodation-content {
+  max-width: 510px;
+}
+
+#accommodation-image {
+  width: 100%;
+  height: auto;
+}
+
+#accommodation-description {
+  margin-top: 10px;
+  font-size: 12px;
+  line-height: 2;
+  min-height: 154px;
+}
+
+.accommmodation-book-now {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.accommmodation-book-now a {
+  text-align: center;
+  text-transform: uppercase;
+  border-radius: 30px;
+  border: 1px solid #0E91E5;
+  display: block;
+  padding: 4px 0;
+  width: 190px;
+  font-size: 25px;
+  text-decoration: none;
+  color: #0E91E5;
+  transition: all 0.3s ease;
+}
+.accommmodation-book-now a:hover {
+  background-color: #0E91E5;
+  color: white;
+}
+
+/* SANTAS HOME */
 #santas-home {
   background-color: #f94144;
 }
@@ -247,7 +403,6 @@ body {
 #weddings {
   background-color: #577590;
 }
-
 
 /* HEADER */
 .nav-bar {
