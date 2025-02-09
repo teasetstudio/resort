@@ -72,7 +72,7 @@
                     <div></div>
                     <div>
                         <div>
-                            <img src="./pictures/about1.png" alt="About Image 1">
+                            <img src="./pictures/about1.png" alt="About Image 1" class="parallax" data-speed="-0.08" data-initial-offset="25">
                         </div>
                     </div>
                 </div>
@@ -80,14 +80,14 @@
                     <div></div>
                     <div>
                         <div>
-                            <img src="./pictures/about2.png" alt="About Image 2">
+                            <img src="./pictures/about2.png" alt="About Image 2" class="parallax" data-speed="-0.25" data-initial-offset="150">
                         </div>
                     </div>
                 </div>
                 <div class="pic-3">
                     <div>
                         <div>
-                            <img src="./pictures/about3.png" alt="About Image 2">
+                            <img src="./pictures/about3.png" alt="About Image 2" class="parallax" data-speed="-0.15" data-initial-offset="100">
                         </div>
                     </div>
                     <div></div>
@@ -96,7 +96,7 @@
                     <div></div>
                     <div>
                         <div>
-                            <img src="./pictures/about4.png" alt="About Image 4">
+                            <img src="./pictures/about4.png" alt="About Image 4" class="parallax" data-speed="-0.55" data-initial-offset="150">
                         </div>
                     </div>
                 </div>
@@ -104,12 +104,12 @@
                 <div class="pic-5">
                     <div>
                         <div>
-                            <img src="./pictures/about5.png" alt="About Image 5">
+                            <img src="./pictures/about5.png" alt="About Image 5" class="parallax" data-speed="-0.07" data-initial-offset="20">
                         </div>
                     </div>
                     <div></div>
                 </div>
-            </img>
+            </div>
         </div>
     </div>
 
@@ -250,6 +250,133 @@
                 disableOnInteraction: false, // Continue autoplay after user interactions
             },
         });
+    </script>
+    <style>
+        .scroll-animate {
+            transform: translateY(100px);
+            opacity: 0;
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+        
+        .scroll-animate.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .parallax {
+            transform: translateY(0);
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+    </style>
+    <script>
+        const scrollElements = document.querySelectorAll(".scroll-animate");
+        
+        const elementInView = (el) => {
+            const elementTop = el.getBoundingClientRect().top;
+            const elementBottom = el.getBoundingClientRect().bottom;
+            return (elementTop >= 0) && (elementBottom <= window.innerHeight);
+        };
+        
+        const displayScrollElement = (element) => {
+            element.classList.add("visible");
+        };
+        
+        const hideScrollElement = (element) => {
+            element.classList.remove("visible");
+        };
+        
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                const elementTop = el.getBoundingClientRect().top;
+                const elementHeight = el.getBoundingClientRect().height;
+                const windowHeight = window.innerHeight;
+                
+                // Calculate how far the element is through the viewport
+                const scrollPercent = (windowHeight - elementTop) / (windowHeight + elementHeight);
+                
+                if (scrollPercent > 0 && scrollPercent < 1) {
+                    // Apply transform based on scroll position
+                    el.style.transform = `translateY(${(1 - scrollPercent) * 100}px)`;
+                    el.style.opacity = scrollPercent;
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', handleScrollAnimation);
+        // Initial check
+        handleScrollAnimation();
+    </script>
+    <script>
+        const parallaxImages = document.querySelectorAll('.parallax');
+        let lastScrollY = window.scrollY;
+        let initialized = false;
+        
+        function easeInOutQuad(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        }
+        
+        function initializePositions() {
+            if (initialized) return;
+            
+            parallaxImages.forEach(image => {
+                const initialOffset = parseInt(image.dataset.initialOffset || '0');
+                image.style.transform = `translateY(${initialOffset}px)`;
+            });
+            
+            initialized = true;
+        }
+        
+        function parallax() {
+            const scrollY = window.scrollY;
+            const windowHeight = window.innerHeight;
+            const scrollDiff = scrollY - lastScrollY;
+            
+            parallaxImages.forEach(image => {
+                const rect = image.getBoundingClientRect();
+                const speed = parseFloat(image.dataset.speed);
+                const initialOffset = parseInt(image.dataset.initialOffset || '0');
+                
+                // Add buffer zone to start effect earlier
+                const bufferZone = windowHeight * 0.3; // 30% of viewport height
+                
+                // Calculate how far through the viewport + buffer the image is
+                const totalRange = windowHeight + rect.height + (bufferZone * 2);
+                const elementPosition = windowHeight + bufferZone - rect.top;
+                const viewportPosition = elementPosition / totalRange;
+                
+                // Create a smoother intensity curve using easing
+                const rawIntensity = 1 - Math.abs(viewportPosition - 0.5) * 1.2; // Reduced falloff for longer effect
+                const intensityFactor = easeInOutQuad(Math.max(0, Math.min(1, rawIntensity)));
+                
+                // Get current transform value or default to initial offset
+                const currentTransform = image.style.transform;
+                const currentY = currentTransform ? 
+                    parseFloat(currentTransform.replace('translateY(', '').replace('px)', '')) : initialOffset;
+                
+                // Calculate new position with increased bounds
+                const maxMovement = 150;
+                const movement = scrollDiff * speed * intensityFactor * 2; // Increased multiplier
+                const boundedMovement = Math.max(-maxMovement, Math.min(maxMovement, movement));
+                
+                const newY = currentY + boundedMovement;
+                
+                // Apply the transform with extended range
+                if (rect.top < windowHeight + bufferZone && rect.bottom > -bufferZone) {
+                    image.style.transform = `translateY(${newY}px)`;
+                }
+            });
+            
+            lastScrollY = scrollY;
+            requestAnimationFrame(parallax);
+        }
+
+        // Initialize positions
+        document.addEventListener('DOMContentLoaded', initializePositions);
+        window.addEventListener('load', initializePositions);
+
+        // Start the animation
+        requestAnimationFrame(parallax);
     </script>
 </body>
 </html>

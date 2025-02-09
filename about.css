@@ -127,7 +127,7 @@
 .pic-2 {
   margin-top: 50px;
   display: flex;
-  height: 442px;
+  height: 400px;
 
   div {
     flex: 1;
@@ -179,7 +179,7 @@
 .pic-4 {
   margin-top: 50px;
   display: flex;
-  height: 270px;
+  height: 220px;
 
   div {
     flex: 1;
