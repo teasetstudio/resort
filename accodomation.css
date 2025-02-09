@@ -1,13 +1,13 @@
 /* ACCOMMODATION */
 #accommmodation {
   background-color: white;
-  padding: 60px 0;
+  padding: 20px 0;
   min-height: 100vh;
 }
 
 .accomodation-inner {
   min-height: 100vh;
-  height: 100%;
+  height: inherit;
   display: flex;
   align-items: center;
 }

@@ -8,6 +8,7 @@
 }
 
 .about-title {
+  margin-top: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,7 +65,7 @@
   justify-content: center;
   color: white;
   width: 100%;
-  margin: 68px auto 0;
+  margin: 80px auto 0;
   text-align: left;
 
   div {

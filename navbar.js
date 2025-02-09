@@ -2,8 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const navBar1 = document.querySelector(".nav-bar1");
   const navBar2 = document.querySelector(".nav-bar2");
   const home = document.querySelector("#home");
+  const about = document.querySelector("#about");
   const accommmodation = document.querySelector("#accommmodation");
   const santa = document.querySelector("#santas-house");
+  const weddings = document.querySelector("#weddings");
 
   // Toggle nav-bar2 visibility based on scroll position
   window.addEventListener('scroll', () => {
@@ -15,16 +17,40 @@ document.addEventListener("DOMContentLoaded", () => {
           navBar2.classList.remove("visible");
       }
 
-      const isAfterAbout = window.scrollY > (accommmodation.getBoundingClientRect().top + window.scrollY - 20)
-      const isAfterAccomodation = window.scrollY > (santa.getBoundingClientRect().top + window.scrollY - 20)
-      if (isAfterAbout && !isAfterAccomodation) {
+      const isAbout = window.scrollY > (about.getBoundingClientRect().top + window.scrollY - 20)
+      const isAccommodation = window.scrollY > (accommmodation.getBoundingClientRect().top + window.scrollY - 20)
+      const isSanta = window.scrollY > (santa.getBoundingClientRect().top + window.scrollY - 20)
+      const isWeddings = window.scrollY > (weddings.getBoundingClientRect().top + window.scrollY - 20)
+
+      if (isAccommodation && !isSanta) {
         //   change navbar color and border color styles
         navBar2.style.color = "black";
         navBar2.style.borderColor = "black";
-
+        navBar2.querySelector("a[href='#accommmodation']").classList.add("active");
       } else {
         navBar2.style.color = "white";
         navBar2.style.borderColor = "white";
+        navBar2.querySelector("a[href='#accommmodation']").classList.remove("active");
+      }
+
+      
+      if (isAbout && !isAccommodation) {
+          navBar2.querySelector("a[href='#about']").classList.add("active");
+      } else {
+        navBar2.querySelector("a[href='#about']").classList.remove("active");
+      }
+
+      if (isSanta && !isWeddings) {
+        navBar2.querySelector("a[href='#santas-house']").classList.add("active");
+      } else {
+        navBar2.querySelector("a[href='#santas-house']").classList.remove("active");
+      }
+
+      
+      if (isWeddings) {
+        navBar2.querySelector("a[href='#weddings']").classList.add("active");
+      } else {
+        navBar2.querySelector("a[href='#weddings']").classList.remove("active");
       }
   });
 

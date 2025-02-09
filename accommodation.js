@@ -10,7 +10,6 @@ const descriptions = {
     acc9: "How about staying on the banks of the golden river, in peace and quiet? These idyllic chalets have their own sauna, and in the front yard you’ll find a kick sled. This traditional Finnish winter runabout will get you to the restaurant or activity sites in no time",
 }
 const items = document.querySelectorAll('.accommodation-list li').forEach(item => {
-    console.log(item);
     item.addEventListener('mouseenter', event => {
         const imageSrc = event.target.getAttribute('data-image');
 
