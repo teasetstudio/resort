@@ -30,22 +30,24 @@
             <a href="#santas-house">➞ Santa's Home</a>
             <a href="#weddings">➞ Weddings & Honeymoons</a>
         </div>
-        <div class="home-inner">
-            <div class="title">
-                <h1>
-                    <span>Kakslauttanen</span>
-                    <span>ARCTIC</span>
-                    <span>RESORT</span>
-                </h1>
-            </div>
-
-            <div class="info">
-                <a class="book-now" href="https://www.kakslauttanen.fi/book-now" target="_blank">Book now</a>
-
-                <div class="adress">
-                    <span>Kakslauttanen,</span>
-                    <span>Fi-99830 Saariselkä,</span>
-                    <span>Finland</span>
+        <div class="container">
+            <div class="home-inner">
+                <div class="title">
+                    <h1 class="header-animate">
+                        <span data-text="Kakslauttanen">Kakslauttanen</span>
+                        <span data-text="ARCTIC">ARCTIC</span>
+                        <span data-text="RESORT">RESORT</span>
+                    </h1>
+                </div>
+    
+                <div class="info">
+                    <a class="book-now" href="https://www.kakslauttanen.fi/book-now" target="_blank">Book now</a>
+    
+                    <div class="adress">
+                        <span>Kakslauttanen,</span>
+                        <span>Fi-99830 Saariselkä,</span>
+                        <span>Finland</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -268,6 +270,33 @@
             transition: transform 0.1s linear;
             will-change: transform;
         }
+
+        .header-animate span:nth-child(1) {
+            opacity: 0;
+            transform: translateY(39px);
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+        .header-animate span:nth-child(2) {
+            opacity: 0;
+            transform: translateY(39px);
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+        .header-animate span:nth-child(3) {
+            opacity: 0;
+            transform: translateY(39px);
+            animation: fadeInUp 1s ease-out 2s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
     </style>
     <script>
         const scrollElements = document.querySelectorAll(".scroll-animate");
@@ -389,6 +418,16 @@
 
         // Start the animation
         requestAnimationFrame(parallax);
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const headers = document.querySelectorAll('h1');
+            headers.forEach(header => {
+                header.style.opacity = 0;
+                header.style.transform = 'translateY(20px)';
+                header.style.animation = 'fadeInUp 0.8s ease-out 1s forwards';
+            });
+        });
     </script>
 </body>
 </html>
