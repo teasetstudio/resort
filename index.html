@@ -72,7 +72,7 @@
                     <div></div>
                     <div>
                         <div>
-                            <img src="./pictures/about1.png" alt="About Image 1" class="parallax" data-speed="-0.08" data-initial-offset="25">
+                            <img src="./pictures/about1.png" alt="About Image 1" class="parallax" data-speed="-0.08" data-initial-offset="25" data-max-scroll="50">
                         </div>
                     </div>
                 </div>
@@ -80,14 +80,14 @@
                     <div></div>
                     <div>
                         <div>
-                            <img src="./pictures/about2.png" alt="About Image 2" class="parallax" data-speed="-0.25" data-initial-offset="150">
+                            <img src="./pictures/about2.png" alt="About Image 2" class="parallax" data-speed="-0.25" data-initial-offset="150" data-max-scroll="150">
                         </div>
                     </div>
                 </div>
                 <div class="pic-3">
                     <div>
                         <div>
-                            <img src="./pictures/about3.png" alt="About Image 2" class="parallax" data-speed="-0.15" data-initial-offset="100">
+                            <img src="./pictures/about3.png" alt="About Image 2" class="parallax" data-speed="-0.1" data-initial-offset="100" data-max-scroll="300">
                         </div>
                     </div>
                     <div></div>
@@ -96,7 +96,7 @@
                     <div></div>
                     <div>
                         <div>
-                            <img src="./pictures/about4.png" alt="About Image 4" class="parallax" data-speed="-0.55" data-initial-offset="150">
+                            <img src="./pictures/about4.png" alt="About Image 4" class="parallax" data-speed="-0.55" data-initial-offset="150" data-max-scroll="300">
                         </div>
                     </div>
                 </div>
@@ -104,7 +104,7 @@
                 <div class="pic-5">
                     <div>
                         <div>
-                            <img src="./pictures/about5.png" alt="About Image 5" class="parallax" data-speed="-0.07" data-initial-offset="20">
+                            <img src="./pictures/about5.png" alt="About Image 5" class="parallax" data-speed="-0.1" data-initial-offset="50" data-max-scroll="60">
                         </div>
                     </div>
                     <div></div>
@@ -336,6 +336,7 @@
                 const rect = image.getBoundingClientRect();
                 const speed = parseFloat(image.dataset.speed);
                 const initialOffset = parseInt(image.dataset.initialOffset || '0');
+                const maxScroll = parseInt(image.dataset.maxScroll || '150');
                 
                 // Add buffer zone to start effect earlier
                 const bufferZone = windowHeight * 0.3; // 30% of viewport height
@@ -354,10 +355,21 @@
                 const currentY = currentTransform ? 
                     parseFloat(currentTransform.replace('translateY(', '').replace('px)', '')) : initialOffset;
                 
-                // Calculate new position with increased bounds
-                const maxMovement = 150;
+                // Calculate new position with custom bounds for each image
                 const movement = scrollDiff * speed * intensityFactor * 2; // Increased multiplier
-                const boundedMovement = Math.max(-maxMovement, Math.min(maxMovement, movement));
+                
+                // Limit the total movement range based on maxScroll
+                const totalMovement = currentY - initialOffset; // How far we've moved from initial position
+                const remainingUpward = maxScroll - totalMovement; // How much more we can move up
+                const remainingDownward = maxScroll + totalMovement; // How much more we can move down
+                
+                // Apply bounds based on remaining movement in each direction
+                let boundedMovement;
+                if (movement > 0) {
+                    boundedMovement = Math.min(movement, remainingUpward);
+                } else {
+                    boundedMovement = Math.max(movement, -remainingDownward);
+                }
                 
                 const newY = currentY + boundedMovement;
                 

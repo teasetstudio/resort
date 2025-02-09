@@ -151,9 +151,9 @@
 }
 
 .pic-3 {
-  margin-top: 50px;
+  margin-top: 100px;
   display: flex;
-  height: 180px;
+  height: 315px;
 
   div {
     flex: 1;
@@ -204,7 +204,7 @@
 }
 
 .pic-5 {
-  margin-top: 50px;
+  margin-top: 100px;
   margin-bottom: 150px;
   display: flex;
   height: 315px;
