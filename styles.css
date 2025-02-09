@@ -36,3 +36,23 @@ body {
     max-width: 600px;
   }
 }
+
+/* CONTAINER */
+.container2 {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+@media (max-width: 1600px) {
+  .container2 {
+    max-width: 1200px;
+  }
+}
+
+@media (max-width: 950px) {
+  .container {
+    max-width: 600px;
+  }
+}
+
