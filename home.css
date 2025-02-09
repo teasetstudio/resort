@@ -23,15 +23,15 @@
       margin-left: 5px;
       text-transform: uppercase;
       color: white;
-      font-size: 93px;
+      font-size: 48px;
       line-height: 1.6em;
-      opacity: 0.6;
+      opacity: 1;
       display: inline-block;
       flex: 0 0 auto;
 
       h1 {
           margin: 0;
-          font-weight: 400;
+          font-weight: 300;
           /* text-shadow: 
               0 2px 4px rgba(0,0,0,0.5),
               0 4px 12px rgba(0,0,0,0.3),
@@ -61,7 +61,7 @@
   }
   .info {
       width: 300px;
-      margin: 0 30px 10% auto;
+      margin: auto 30px 5% auto;
       margin-top: auto;
 
       .book-now {
