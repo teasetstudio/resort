@@ -40,18 +40,18 @@ body {
 /* CONTAINER */
 .container2 {
   width: 100%;
-  max-width: 1600px;
+  max-width: 1700px;
   margin: 0 auto;
 }
 
-@media (max-width: 1600px) {
+@media (max-width: 1700px) {
   .container2 {
-    max-width: 1200px;
+    max-width: 1500px;
   }
 }
 
 @media (max-width: 950px) {
-  .container {
+  .container2 {
     max-width: 600px;
   }
 }
