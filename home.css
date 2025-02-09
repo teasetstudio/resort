@@ -23,7 +23,7 @@
   .title {
       text-transform: uppercase;
       color: white;
-      font-size: 86px;
+      font-size: 60px;
       line-height: 1.8em;
       display: inline-block;
       flex: 0 0 auto;
@@ -60,7 +60,7 @@
   }
   .info {
       width: 300px;
-      margin: 0 30px 8% auto;
+      margin: 0 30px 10% auto;
       margin-top: auto;
 
       .book-now {
