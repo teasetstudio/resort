@@ -38,9 +38,18 @@
   padding: 10px;
   cursor: pointer;
   font-size: 22px;
-  line-height: 0.8;
-  transition: background-color 0.3s ease;
+  line-height: 1.2;
+  height: 46px; /* Fixed height to prevent layout shifts */
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
   color: gray;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.accommodation-list li:hover {
+  color: black;
 }
 
 .accommodation-list li.active {
