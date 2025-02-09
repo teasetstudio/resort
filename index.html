@@ -297,6 +297,17 @@
                 transform: translateY(0);
             }
         }
+
+        .wedding-card {
+            opacity: 0;
+            transform: translateX(100px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .wedding-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
     </style>
     <script>
         const scrollElements = document.querySelectorAll(".scroll-animate");
@@ -428,6 +439,24 @@
                 header.style.animation = 'fadeInUp 0.8s ease-out 1s forwards';
             });
         });
+    </script>
+    <script>
+        // Wedding card animation
+        const weddingCard = document.querySelector('.wedding-card');
+        const weddingObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    weddingObserver.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, {
+            threshold: 0.2 // Trigger when 20% of the element is visible
+        });
+
+        if (weddingCard) {
+            weddingObserver.observe(weddingCard);
+        }
     </script>
 </body>
 </html>
